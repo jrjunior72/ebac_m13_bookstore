@@ -1,2 +1,4 @@
 from product.serializers.product_serializer import ProductSerializer
-from product.serializers.category_serializer import CategorySeria1izer
+from product.serializers.category_serializer import CategorySerializer
+from .order_serializer import OrderSerializer
+

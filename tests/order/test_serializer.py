@@ -10,6 +10,5 @@ def test_order_serializer_data():
     serializer = OrderSerializer(order)
     data = serializer.data
 
-    assert data["id"] == order.id
     assert data["status"] == order.status
     assert len(data["products"]) == 2

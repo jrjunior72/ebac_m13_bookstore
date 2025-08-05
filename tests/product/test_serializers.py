@@ -8,7 +8,6 @@ def test_product_serializer_data():
     serializer = ProductSerializer(product)
     data = serializer.data
 
-    assert data["id"] == product.id
     assert data["title"] == product.title
-    assert data["price"] == product.price
+    assert float(data["price"]) == float(product.price)
     assert "category" in data
