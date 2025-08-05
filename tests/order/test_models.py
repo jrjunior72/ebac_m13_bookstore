@@ -6,8 +6,9 @@ from tests.factories.product_factory import ProductFactory
 @pytest.mark.django_db
 def test_order_creation():
     order = OrderFactory()
-    assert isinstance(order, Order)
-    assert order.status in ["pending", "completed", "cancelled"]
+    assert order.pk is not None
+    assert order.user is not None
+    assert order.products.count() > 0
 
 @pytest.mark.django_db
 def test_order_with_products():
