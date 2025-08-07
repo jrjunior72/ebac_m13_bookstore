@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from product.models import Product 
 
 class Order(models.Model): 
-    product = models.ManyToManyField(Product, blank=False, null=False) 
+    product = models.ManyToManyField(Product, blank=False) 
     user = models.ForeignKey(User, on_delete=models.CASCADE) 
     status = models.CharField(
         max_length=20,
