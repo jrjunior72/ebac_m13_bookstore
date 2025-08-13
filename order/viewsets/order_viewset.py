@@ -4,5 +4,5 @@ from order.models import Order
 from order.serializers import OrderSerializer
 
 class OrderViewSet(ModelViewSet): 
-    queryset = Order.objects.all() 
+    queryset = Order.objects.all().order_by('id')
     serializer_class = OrderSerializer
