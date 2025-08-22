@@ -1,0 +1,32 @@
+version: '3.9' 
+
+services: 
+  back: 
+    build: . 
+    command: python manage.py runserver 0.0.0.0:8000 
+    volumes: 
+      - .:/usr/src/app/ 
+    ports: 
+      - "8000:8000" 
+    env_file: 
+      - ./env.dev 
+    depends_on: 
+      db:
+        condition: service_healthy
+
+  db: 
+    image: postgres:14 
+    environment: 
+      - POSTGRES_DB=ebac_m13_bookstore_db 
+      - POSTGRES_USER=dev 
+      - POSTGRES_PASSWORD=dev 
+    volumes: 
+      - postgres_data:/var/lib/postgresql/data/ 
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U dev"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes: 
+  postgres_data: 
