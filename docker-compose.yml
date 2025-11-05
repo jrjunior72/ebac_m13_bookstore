@@ -1,4 +1,4 @@
-version: '3.9' 
+#version: '3.9' 
 
 services: 
   back: 
@@ -12,9 +12,11 @@ services:
       - ./env.dev 
     networks: 
       - backend
+    # depends_on: 
+    #   db:
+    #     condition: service_healthy
     depends_on: 
-      db:
-        condition: service_healthy
+      - db
 
   db: 
     image: postgres:14 
@@ -25,7 +27,7 @@ services:
     volumes: 
       - postgres_data:/var/lib/postgresql/data/ 
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U dev"]
+      test: ["CMD-SHELL", "pg_isready -U dev -d ebac_m13_bookstore_db || exit 0"]
       interval: 5s
       timeout: 5s
       retries: 5
