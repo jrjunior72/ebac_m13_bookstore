@@ -7,19 +7,26 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: [3.8, 3.9]
-
+        python-version: [3.13]
+        
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
+
+    - name: Load environment variables
+      run: |
+        set -a
+        source .env.dev
+        set +a
+
 
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v2
       with:
         python-version: ${{ matrix.python-version }}
 
-    - name: Install poetry
+    - name: Install poetry ${{ matrix.python-version }}
       run: |
         python -m ensurepip
         python -m pip install --upgrade pip
