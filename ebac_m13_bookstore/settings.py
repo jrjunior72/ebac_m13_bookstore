@@ -152,4 +152,5 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication', 
         'rest_framework.authentication.BasicAuthentication',
     ],
+    # 'DEFAULT_AUTHENTICATION_CLASSES': [],
 }
