@@ -34,6 +34,6 @@ jobs:
         uses: Wemake-services/wemake-python-styleguide@0.16.0
         continue-on-error: true
         with:
-          reporter:'githug-pr-review'
+          reporter:'github-pr-review'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
