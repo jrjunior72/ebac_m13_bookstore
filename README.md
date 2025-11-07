@@ -43,4 +43,7 @@ git commit -m "Configuração inicial do DRF e atualização do README"
 ### Subir a branch para o GitHub
 git push origin project_setup
 
+### Status
+![Tests](![Tests](https://github.com/jrjunior72/ebac_m13_bookstore/actions/workflows/workflow-pr.yml/badge.svg))
+
 
