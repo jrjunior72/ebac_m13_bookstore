@@ -5,6 +5,8 @@ jobs:
   qa:
     name: Quality check
     runs-on: ubuntu-22.04
+    env:
+      SECRET_KEY: 'django-insecure-(s3)mafduuulko!^_5-pz+9xlql^a-b7q*$r=9q$o2-ugz(c9k'
     steps:
       - uses: actions/checkout@v1
       - name: Set up Python
