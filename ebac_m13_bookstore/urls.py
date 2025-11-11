@@ -18,9 +18,14 @@ Including another URLconf
 import debug_toolbar
 from django.contrib import admin
 from django.urls import path, re_path, include
+from django.http import HttpResponse
 from rest_framework.authtoken.views import obtain_auth_token
 
+def home(request):
+    return HttpResponse("🚀 EBAC Bookstore API está funcionando!", content_type="text/plain; charset=utf-8")
+
 urlpatterns = [
+    path('', home, name='home'),
     path('__debug__/', include(debug_toolbar.urls)),
     path("admin/", admin.site.urls),
     re_path("ebac_m13_bookstore/(?P<version>(v1|v2))/", include("order.urls")),

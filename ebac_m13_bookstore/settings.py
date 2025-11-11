@@ -21,13 +21,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-(s3)mafduuulko!^_5-pz+9xlql^a-b7q*$r=9q$o2-ugz(c9k"
+SECRET_KEY = "django-insecure-sua-chave-muito-longa-aqui-1234567890abcdef"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
 ALLOWED_HOSTS = [
     'ricardoferreirajr.pythonanywhere.com',
+    '.pythonanywhere.com',
     'localhost',
     '127.0.0.1',
 ]
@@ -48,7 +49,7 @@ INSTALLED_APPS = [
     'order',
     'product',
     'ebac_m13_bookstore',
-    'debug_toolbar',
+    #'debug_toolbar',
 ]
 
 MIDDLEWARE = [
@@ -133,7 +134,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = "static/"
+STATIC_URL = "/static/"
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
@@ -144,9 +150,9 @@ INTERNAL_IPS = [
     '127.0.0.1',
 ]
 
-SECRET_KEY = os.environ.get("SECRET_KEY")
-DEBUG = int(os.environ.get('DEBUG', default=0)) 
-ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS', 'localhost').split(" ")
+#SECRET_KEY = os.environ.get("SECRET_KEY")
+#DEBUG = int(os.environ.get('DEBUG', default=0)) 
+#ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS', 'localhost').split(" ")
 
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
