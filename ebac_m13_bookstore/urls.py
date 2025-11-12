@@ -32,6 +32,6 @@ urlpatterns = [
     re_path("ebac_m13_bookstore/(?P<version>(v1|v2))/", include("order.urls")),
     re_path("ebac_m13_bookstore/(?P<version>(v1|v2))/", include("product.urls")),
     path('api/token/', obtain_auth_token, name='api_token_auth'),
-    path("update_server/", views.update, name="update"),
+    path("update_server/", views.update_server, name="update_server"),
     path("hello/", views.hello_world, name="hello_world"),
 ]

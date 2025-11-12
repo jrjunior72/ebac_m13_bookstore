@@ -1,3 +1,4 @@
+import os
 from django.http import HttpResponse
 from django.template import loader
 from django.views.decorators.csrf import csrf_exempt
@@ -7,7 +8,8 @@ import git
 
 @csrf_exempt
 def update_server(request):
-    if request.method == "POST":
+    """Atualiza o código no PythonAnywhere via webhook do GitHub"""
+    if request.method in ["POST", "GET"]:
         '''
         pass the path of the diectory where your project will be
         stored on PythonAnywhere in the git.Repo() as parameter.
@@ -17,9 +19,11 @@ def update_server(request):
         origin = repo.remotes.origin
 
         origin.pull()
+        # força reload do WSGI (sem precisar acessar painel manualmente)
+        os.system("touch /var/www/ricardoferreirajr_pythonanywhere_com_wsgi.py")
         return HttpResponse("Updated code on PythonAnywhere")
     else:
-        return HttpResponse("Couldn't update the code on PythonAnywhere")
+        return HttpResponse("Couldn't update the code on PythonAnywhere", status=405)
 
 
 def hello_world(request):
