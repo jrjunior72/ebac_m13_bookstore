@@ -27,7 +27,7 @@ def home(request):
 
 urlpatterns = [
     path('', home, name='home'),
-    path('__debug__/', include(debug_toolbar.urls)),
+    #path('__debug__/', include(debug_toolbar.urls)),
     path("admin/", admin.site.urls),
     re_path("ebac_m13_bookstore/(?P<version>(v1|v2))/", include("order.urls")),
     re_path("ebac_m13_bookstore/(?P<version>(v1|v2))/", include("product.urls")),
