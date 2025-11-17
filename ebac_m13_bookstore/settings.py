@@ -99,6 +99,7 @@ DATABASES = {
         'PORT': os.environ.get('SQL_PORT', '5432'),
     }
 }
+print("DATABASE NAME:", os.environ.get('SQL_DATABASE'))
 
 
 # Password validation
